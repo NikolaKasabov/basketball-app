@@ -16,6 +16,19 @@ function FileLoader() {
       const arr = convertStringToArray(data);
       const matrix = convertArrayToMatrix(arr);
 
+      // error checking
+      matrix.forEach((row, index) => {
+        if (row.length !== 4) {
+          alert(`Invalid data on line ${index + 1}`);
+        }
+
+        for (let i = 2; i < 4; i++) {
+          if (isNaN(+row[i])) {
+            alert(`Data on line ${index + 1}, position ${i + 1} must be a number.`);
+          }
+        }
+      });
+
       setStats(matrix);
     }
   }
