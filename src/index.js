@@ -5,9 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ContextProvider from './store/statsContext';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Table from './components/Table';
 import UnsortedTable from './components/UnsortedTable';
-import TeamPoints from './components/TeamPoints';
+import MostPointsInAllGames from './components/MostPointsInAllGames';
+import MostPointsInASingleGame from './components/MostPointsInASingleGame';
+import ScoredPointsPerSecond from './components/ScoredPointsPerSecond';
+import MostPointsByATeam from './components/MostPointsByATeam';
+import BestPlayerInTheTeam from './components/BestPlayerInTheTeam';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -18,12 +21,28 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'unsorted',
-        element: <UnsortedTable />
+        element: <UnsortedTable />,
       },
       {
-        path: 'team-points',
-        element: <TeamPoints />
-      }
+        path: 'most-points-in-a-single-game',
+        element: <MostPointsInASingleGame />,
+      },
+      {
+        path: 'most-points-in-all-games',
+        element: <MostPointsInAllGames />,
+      },
+      {
+        path: 'scored-points-per-second',
+        element: <ScoredPointsPerSecond />,
+      },
+      {
+        path: 'most-points-by-a-team',
+        element: <MostPointsByATeam />,
+      },
+      {
+        path: 'best-player-in-the-team',
+        element: <BestPlayerInTheTeam />,
+      },
     ]
   }
 ]);

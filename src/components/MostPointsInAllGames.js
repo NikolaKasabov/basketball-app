@@ -2,36 +2,36 @@ import { useContext } from 'react';
 import { statsContext } from '../store/statsContext';
 import Table from './Table';
 
-function TeamPoints() {
+function MostPointsInAllGames() {
   const { stats, setStats } = useContext(statsContext);
 
   let tableData;
   if (stats.length > 0) {
-    const teamPoints = stats.reduce((acc, cur) => {
-      if (!acc.hasOwnProperty(cur[1])) {
-        acc[cur[1]] = +cur[3];
+    const points = stats.reduce((acc, cur) => {
+      if (!acc.hasOwnProperty(cur[0])) {
+        acc[cur[0]] = +cur[3];
       } else {
-        acc[cur[1]] += +cur[3];
+        acc[cur[0]] += +cur[3];
       }
 
       return acc;
     }, {});
 
-    tableData = Object.entries(teamPoints)
-      .sort((a, b) => b[1] - a[1]);
+    tableData = Object.entries(points)
+      .sort((a, b) => +b[1] - +a[1]);
   }
 
   return (
     <>
       {tableData ? (
         <Table
-          columns={['Team', 'Point Scored']}
+          columns={['Player name', 'Points Scored']}
           data={tableData}
-          numbered
+          showPlacement
         />
       ) : null}
     </>
   );
 }
 
-export default TeamPoints;
+export default MostPointsInAllGames;
