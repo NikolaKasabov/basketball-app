@@ -13,7 +13,7 @@ function Table({ columns, data, numbered, className }) {
       <tbody>
         {data.map((row, index) => {
           return <tr key={nanoid()}>
-            <td>{index + 1}.</td>
+            {numbered && <td>{index + 1}.</td>}
             {row.map(cell => <td key={nanoid()}>{cell}</td>)}
           </tr>;
         })}

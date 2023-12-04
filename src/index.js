@@ -4,11 +4,30 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ContextProvider from './store/statsContext';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Table from './components/Table';
+import UnsortedTable from './components/UnsortedTable';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        path: 'unsorted',
+        element: <UnsortedTable />
+      }
+    ]
+  }
+]);
+
 root.render(
   <ContextProvider>
-    <App />
+    <RouterProvider router={router}>
+      <App />
+    </RouterProvider>
   </ContextProvider>
 );
 

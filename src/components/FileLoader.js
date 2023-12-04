@@ -38,7 +38,7 @@ function FileLoader({className}) {
 
   return (
     <label className={`file-loader ${className}`}>
-      <i class="fa-solid fa-cloud-arrow-up"></i> Choose file
+      <i className="fa-solid fa-cloud-arrow-up"></i> Choose file
       <input type="file" onChange={handleFileUpload} />
     </label>
   );

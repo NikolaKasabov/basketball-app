@@ -1,13 +1,19 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import './App.css';
 import FileLoader from './components/FileLoader';
 import { statsContext } from './store/statsContext';
-import Table from './components/Table';
+import { Outlet, useNavigate } from 'react-router-dom';
+import Navigation from './components/Navigation';
 
 function App() {
   const { stats, setStats } = useContext(statsContext);
+  const navigate = useNavigate();
 
-  console.log(stats);
+  useEffect(() => {
+    if (stats.length > 0) {
+      navigate('/unsorted');
+    }
+  }, [stats]);
 
   return (
     <div className="App">
@@ -15,14 +21,9 @@ function App() {
       {stats.length === 0 ? (
         <p className='select-file'>Please select a file.</p>
       ) : (
-        <Table
-          columns={['Player name', 'Team', 'Time played(s)', 'Points scored']}
-          data={stats}
-          numbered
-          className='stats-table'
-        />
+        <Navigation />
       )}
-
+      <Outlet />
     </div>
   );
 }
