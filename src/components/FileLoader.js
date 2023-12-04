@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import { convertArrayToMatrix, convertStringToArray } from '../utils/utils';
 import { statsContext } from '../store/statsContext';
+import './FileLoader.css';
 
-function FileLoader() {
+function FileLoader({className}) {
   const { stats, setStats } = useContext(statsContext);
 
   function handleFileUpload(ev) {
@@ -33,7 +34,15 @@ function FileLoader() {
     }
   }
 
-  return <input type="file" onChange={handleFileUpload} />
+  // return <input className={className} type="file" onChange={handleFileUpload} />;
+
+  return (
+    <label className={`file-loader ${className}`}>
+      <i class="fa-solid fa-cloud-arrow-up"></i> Choose file
+      <input type="file" onChange={handleFileUpload} />
+    </label>
+  );
+
 }
 
 export default FileLoader;
