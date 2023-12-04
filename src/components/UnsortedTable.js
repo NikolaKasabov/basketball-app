@@ -6,10 +6,14 @@ function UnsortedTable() {
   const { stats, setStats } = useContext(statsContext);
 
   return (
-    <Table
-      columns={['Player name', 'Team', 'Time played(s)', 'Points scored']}
-      data={stats}
-    />
+    <>
+      {(stats.length > 0) ? (
+        <Table
+          columns={['Player name', 'Team', 'Time played(s)', 'Points scored']}
+          data={stats}
+        />
+      ) : null}
+    </>
   );
 }
 

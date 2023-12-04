@@ -7,6 +7,7 @@ import ContextProvider from './store/statsContext';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Table from './components/Table';
 import UnsortedTable from './components/UnsortedTable';
+import TeamPoints from './components/TeamPoints';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: 'unsorted',
         element: <UnsortedTable />
+      },
+      {
+        path: 'team-points',
+        element: <TeamPoints />
       }
     ]
   }
